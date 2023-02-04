@@ -6,7 +6,7 @@ EXPOSE 80
 EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
+WORKDIR /src/OnlineSocial/src
 COPY ["src/OnlineSocial.WebApi/OnlineSocial.WebApi.csproj", "src/OnlineSocial.WebApi/"]
 COPY ["src/OnlineSocial.Foundation/OnlineSocial.Foundation.csproj", "src/OnlineSocial.Foundation/"]
 RUN dotnet restore "src/OnlineSocial.WebApi/OnlineSocial.WebApi.csproj"
