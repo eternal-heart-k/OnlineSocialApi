@@ -7,7 +7,6 @@ namespace OnlineSocial.WebApi.Controllers
     {
         public TestController()
         {
-
         }
 
         [HttpGet("hello")]
