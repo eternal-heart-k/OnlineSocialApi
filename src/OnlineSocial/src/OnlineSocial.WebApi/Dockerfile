@@ -9,7 +9,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["src/OnlineSocial/src/OnlineSocial.WebApi/OnlineSocial.WebApi.csproj", "src/OnlineSocial/src/OnlineSocial.WebApi/"]
 COPY ["src/OnlineSocial/src/OnlineSocial.Foundation/OnlineSocial.Foundation.csproj", "src/OnlineSocial/src/OnlineSocial.Foundation/"]
-RUN dotnet restore "src/OnlineSocial.WebApi/OnlineSocial.WebApi.csproj"
+RUN dotnet restore "src/OnlineSocial/src/OnlineSocial.WebApi/OnlineSocial.WebApi.csproj"
 COPY . .
 WORKDIR "/src/src/OnlineSocial/src/OnlineSocial.WebApi"
 RUN dotnet build "OnlineSocial.WebApi.csproj" -c Release -o /app/build
