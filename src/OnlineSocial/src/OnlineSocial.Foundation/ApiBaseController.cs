@@ -3,7 +3,7 @@
 namespace OnlineSocial.Foundation
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ApiBaseController : ControllerBase
     {
 
