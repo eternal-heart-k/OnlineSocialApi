@@ -1,8 +1,44 @@
+using Microsoft.EntityFrameworkCore;
+using OnlineSocial.Application.Interface;
+using OnlineSocial.Application.Service;
+using OnlineSocial.Foundation;
+using OnlineSocial.User.Infrastructure.DbContexts;
+using OnlineSocial.User.Service;
+using OnlineSocial.User.Interface.Query;
+using Autofac;
+using System.Reflection;
+using Autofac.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
+
+// DbContext Options
+builder.Services.AddDbContext<UserDbContext>(op => {
+    string connectionString = builder.Configuration.GetConnectionString("MySQLConnection");
+    var serverVersion = ServerVersion.AutoDetect(connectionString);
+    op.UseMySql(connectionString, serverVersion);
+});
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder =>
+{
+    // 注入Service程序集
+    Assembly assembly = Assembly.Load(Assembly.GetExecutingAssembly().GetName().Name);//可以是其他程序集
+    builder.RegisterAssemblyTypes(assembly)
+    .AsImplementedInterfaces()
+    .InstancePerDependency();
+});
+/*#region 注册数据库
+
+builder.Services.AddTransient<UserDbContext>();
+
+#endregion*/
+
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IUserQuery, UserQuery>();
+
+//builder.Services.AddDataService();
 
 // 设置允许所有来源跨域
 builder.Services.AddCors(options =>
@@ -30,13 +66,16 @@ app.UseCors("all");
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(op =>
+    {
+        //展示执行时间ms
+        op.DisplayRequestDuration();
+        //改变URL
+        op.EnableDeepLinking();
+    });
 }
 
 //app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

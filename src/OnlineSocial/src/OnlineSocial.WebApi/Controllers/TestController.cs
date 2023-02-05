@@ -1,18 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
+using OnlineSocial.Application.Interface;
 using OnlineSocial.Foundation;
+using OnlineSocial.User.Model;
 
 namespace OnlineSocial.WebApi.Controllers
 {
     public class TestController : ApiBaseController
     {
-        public TestController()
+        private readonly IUserService _userService;
+
+        public TestController(IUserService userService)
         {
+            _userService = userService;
         }
 
-        [HttpGet("hello")]
-        public string GetHello()
-        {
-            return "hello world";
-        }
+        [HttpGet("userinfo")]
+        public Task<UserInfo> GetFirstUserInfo() => _userService.GetFirstUserInfoAsync();
     }
 }
