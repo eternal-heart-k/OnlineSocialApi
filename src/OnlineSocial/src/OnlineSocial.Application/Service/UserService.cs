@@ -1,7 +1,7 @@
 ﻿using OnlineSocial.Application.Interface;
 using OnlineSocial.Foundation;
-using OnlineSocial.User.Interface.Query;
-using OnlineSocial.User.Model;
+using OnlineSocial.UserProfile.Interface.Query;
+using OnlineSocial.UserProfile.Model;
 
 namespace OnlineSocial.Application.Service
 {

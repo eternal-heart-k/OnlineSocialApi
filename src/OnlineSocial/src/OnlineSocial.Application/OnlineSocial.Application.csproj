@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineSocial.User\OnlineSocial.User.csproj" />
+    <ProjectReference Include="..\OnlineSocial.User\OnlineSocial.UserProfile.csproj" />
   </ItemGroup>
 
 </Project>

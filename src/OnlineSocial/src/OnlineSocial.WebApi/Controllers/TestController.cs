@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnlineSocial.Application.Interface;
 using OnlineSocial.Foundation;
-using OnlineSocial.User.Model;
+using OnlineSocial.UserProfile.Model;
 
 namespace OnlineSocial.WebApi.Controllers
 {

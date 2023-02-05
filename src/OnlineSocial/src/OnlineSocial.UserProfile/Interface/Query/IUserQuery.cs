@@ -1,9 +1,10 @@
 ﻿using OnlineSocial.Foundation;
 using OnlineSocial.UserProfile.Model;
+using System.Threading.Tasks;
 
-namespace OnlineSocial.Application.Interface
+namespace OnlineSocial.UserProfile.Interface.Query
 {
-    public interface IUserService
+    public interface IUserQuery
     {
         Task<UserInfo> GetFirstUserInfoAsync();
     }

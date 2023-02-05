@@ -2,12 +2,12 @@ using Microsoft.EntityFrameworkCore;
 using OnlineSocial.Application.Interface;
 using OnlineSocial.Application.Service;
 using OnlineSocial.Foundation;
-using OnlineSocial.User.Infrastructure.DbContexts;
-using OnlineSocial.User.Service;
-using OnlineSocial.User.Interface.Query;
 using Autofac;
 using System.Reflection;
 using Autofac.Extensions.DependencyInjection;
+using OnlineSocial.UserProfile.Service;
+using OnlineSocial.UserProfile.Infrastructure.DbContexts;
+using OnlineSocial.UserProfile.Interface.Query;
 
 var builder = WebApplication.CreateBuilder(args);
 
